@@ -28,6 +28,7 @@ import { initializePassportJWT } from './config/jwt.passport.js'
 
 import { generateProductsMock } from './mocks/products.mock.js'
 import { errorMiddleware } from './middlewares/error.js'
+import { addLogger } from './logger.js'
 
 // initial configuration
 
@@ -57,6 +58,10 @@ initializePassportGithub()
 initializePassportLocal()
 initializePassportJWT()
 app.use(passport.initialize())
+
+// logger
+
+app.use(addLogger)
 
 // server start and socket io
 
