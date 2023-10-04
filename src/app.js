@@ -131,6 +131,19 @@ app.use('/api/sessions', routerSession);
 
 app.get("/mockingproducts", async (req, res) => res.send(generateProductsMock(100)))
 
+// logger - desafio 11 - TODO: Quiza quitar mas adelante
+
+app.get("/loggerTest", async (req, res) => {
+  req.logger.fatal("Test de Logger - Level: 'fatal'")
+  req.logger.error("Test de Logger - Level: 'error'")
+  req.logger.warning("Test de Logger - Level: 'warning'")
+  req.logger.info("Test de Logger - Level: 'info'")
+  req.logger.http("Test de Logger - Level: 'http'")
+  req.logger.debug("Test de Logger - Level: 'debug'")
+
+  res.send("Se termino de probar el logger exitosamente")
+})
+
 // error middleware
 
 app.use(errorMiddleware)
